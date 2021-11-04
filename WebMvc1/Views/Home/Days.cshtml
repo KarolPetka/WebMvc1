@@ -1,0 +1,21 @@
+﻿@model WebMvc1.Models.DaysModel
+@{
+    ViewData["Title"] = "Days";
+    DateTime dob = new DateTime(Model.Year, Model.Month, Model.Day);
+    double days = (DateTime.Today - dob).TotalDays;
+}
+
+<div class="text-left">
+    <h1>Ilość dni od daty urodzenia to: @days</h1>
+
+    @if (Model.Year % 4 == 0 && Model.Year % 100 != 0 || Model.Year % 400 == 0)
+    {
+        <h1>Rok urodzenia JEST przestępny</h1>
+    }
+    else
+    {
+        <h2>Rok urodzenia NIE JEST przestępny</h2>
+    }
+</div>
+<br />
+<a href="/days.html">Powrót do Days (HTML)</a>
